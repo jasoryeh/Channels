@@ -9,7 +9,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 /** Simple implementation of {@link PlayerManager}. */
-public class SimplePlayerManager implements PlayerManager {
+public class
+SimplePlayerManager implements PlayerManager {
 
     /** Player names mapped to their membership channel */
     private final Map<String, Channel> playerMembershipMap;

@@ -2,6 +2,7 @@ package com.github.rmsy.channels.impl;
 
 import com.github.rmsy.channels.Channel;
 import com.github.rmsy.channels.event.ChannelMessageEvent;
+import com.github.rmsy.channels.vault.VaultSetup;
 import com.google.common.base.Preconditions;
 import com.google.common.collect.ImmutableSet;
 import org.bukkit.Bukkit;
@@ -139,8 +140,8 @@ public class SimpleChannel implements Channel {
     public void sendMessageToViewer(Player sender, CommandSender viewer, String sanitizedMessage, ChannelMessageEvent event) {
         boolean senderPresent = sender != null;
 
-        String senderName = senderPresent ? sender.getName(viewer) : "Console";
-        String senderDisplayName = senderPresent ? sender.getDisplayName(viewer) : ChatColor.GOLD + "*" + ChatColor.AQUA + "Console";
+        String senderName = VaultSetup.getPrefix(sender) + (senderPresent ? sender.getName(viewer) : "Console");
+        String senderDisplayName = VaultSetup.getPrefix(sender) + (senderPresent ? sender.getDisplayName(viewer) : ChatColor.GOLD + "*" + ChatColor.AQUA + "Console");
         String format = senderPresent ? this.format : this.broadcastFormat;
 
         viewer.sendMessage(MessageFormat.format(

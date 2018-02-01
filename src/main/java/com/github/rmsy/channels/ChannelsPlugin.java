@@ -5,6 +5,7 @@ import com.github.rmsy.channels.impl.SimpleChannel;
 import com.github.rmsy.channels.impl.SimplePlayerManager;
 import com.github.rmsy.channels.listener.ChatListener;
 import com.github.rmsy.channels.listener.PlayerListener;
+import com.github.rmsy.channels.vault.VaultSetup;
 import com.google.common.base.Preconditions;
 import com.sk89q.bukkit.util.BukkitCommandsManager;
 import com.sk89q.bukkit.util.CommandsManagerRegistration;
@@ -43,7 +44,6 @@ public class ChannelsPlugin extends JavaPlugin {
     public static ChannelsPlugin get() {
         return ChannelsPlugin.plugin;
     }
-
     /**
      * Gets the universal player manager.
      *
@@ -108,6 +108,8 @@ public class ChannelsPlugin extends JavaPlugin {
         this.commands = new BukkitCommandsManager();
         this.commandsRegistration = new CommandsManagerRegistration(this, this.commands);
         this.commandsRegistration.register(GlobalChannelCommands.class);
+
+        if(getServer().getPluginManager().getPlugin("Vault") != null) VaultSetup.setupVault(this);
     }
 
     /**

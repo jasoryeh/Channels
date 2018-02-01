@@ -70,6 +70,10 @@
             <id>pa-releases</id>
             <url>https://repo.extension.ws/content/repositories/releases</url>
         </repository>
+        <repository>
+            <id>vault-repo</id>
+            <url>http://nexus.hc.to/content/repositories/pub_releases</url>
+        </repository>
     </repositories>
 
     <distributionManagement>
@@ -100,6 +104,13 @@
             <groupId>com.sk89q</groupId>
             <artifactId>command-framework-bukkit</artifactId>
             <version>1.9-SNAPSHOT</version>
+        </dependency>
+
+        <dependency>
+            <groupId>net.milkbowl.vault</groupId>
+            <artifactId>VaultAPI</artifactId>
+            <version>1.6</version>
+            <scope>provided</scope>
         </dependency>
     </dependencies>
 
